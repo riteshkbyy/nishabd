@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block body %}
+<div class="container">
+<blockquote><h3>Control Panel</h3></blockquote>
+<div class="divider"></div>
+<p>
+    Welcome, {{request.user.username}}
+</p>
+<a class = "btn btn-danger black right" href = "{% url 'article:addarticle' %}">Add Article </a>
+{% if articles %}
+<table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Article</th>
+            <th scope="col">Author</th>
+            <th scope="col">Date</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for article in articles %}
+          <tr>
+            <th scope="row">{{article.id}}</th>
+            <td><a href="{% url 'article:detail' article.slug %}">{{article.title}}</a></td>
+            <td>{{article.author.username}}</td>
+            <td>{{article.created_date}}</td>
+            <td><a href="{% url 'article:update' article.slug %}" class = "btn btn-warning green">edit</a></td>
+            <td><a href="{% url 'article:delete' article.slug %}" class = "btn btn-safe red">Delete</a> </td>
+              
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+{% else %}
+<div class="divider"></div>
+<div class = "alert alert-danger">
+    No Articles found...
+
+</div>
+{% endif %}
+
+
+
+{% endblock body %}
+
+</div>
+

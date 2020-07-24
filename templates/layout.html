@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!--Import Google Icon Font-->
+         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+         <!--Import materialize.css-->
+         <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection" />
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection" />
+    
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+        <title>NiShabd</title>
+        <style>id="slide-out"
+            footer{
+            height:50px;
+            text-align:center;
+            color:white;
+            width :100%;
+            margin-bottom : 0px;
+            padding:12px;
+            }
+            .articleitem{
+                float: left;
+                width: 31.5%;
+                margin: .8%;
+            }
+            .settings{
+                
+                display: contents ;
+            }
+ 
+            @media screen and (max-width: 994px) {
+                .articleitem{
+                width: 100%;
+                }
+                .settings{
+                    display: none;
+                }
+            }
+
+        </style>
+
+        <title>NiShabd</title>
+            
+    </head>
+    <body>  
+            
+{% include "includes/nav_bar.html" %}
+            
+
+             <div style = "margin-top : 50px; margin-bottom:100px;" class = "">
+                    
+                {% if messages %}
+                    
+                        {% for message in messages %}
+                        {% if message.tags == "info" %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                        {% else %}
+                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+
+                        {% endif %}
+
+
+                        {% endfor %}
+                    
+                    {% endif %}
+                {% block body %}
+                
+                {% endblock body %}
+
+            </div>
+         
+             
+
+             {% block sidebar %}
+            {% endblock %}
+
+                <!-- Main Section -->
+                
+                        {% block content %}
+                        {% endblock %}
+                
+                <!-- Page Footer -->
+                
+               
+
+                <!-- Back to Top Button -->
+                </div>
+                <div id="new-feed-modal" tabindex="-1" role="dialog" aria-labelledby="NewFeedDialog" aria-hidden="true" class="modal fade" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 id="new-feed-title" class="modal-title">Add a New Feed</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <form id="new-feed-form" method="post" action="{% url 'news:new-feed' %}" class="form-horizontal">
+                                            {% csrf_token %}
+
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12">
+                                                            {% if form.non_field_errors %}
+                                                                <div class="non-field-errors">
+                                                                    {% for error in form.non_field_errors %}
+                                                                        <span>{{ error }}</span>
+                                                                    {% endfor %}
+                                                                </div>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">{{ form.title.label }}</label>
+                                                        <div class="col-sm-9">
+                                                            {{ form.title }}
+                                                    </div>
+                                                </div>
+
+
+                                                        <label class="col-sm-3 control-label">{{ form.url.label }}</label>
+                                                        <div class="col-sm-9">
+                                                                {{ form.url }}
+                                                            <p class="help-block">{{ form.url.help_text }}</p>
+                                                        </div>
+                                                    </div>
+
+
+                                                    {% if form.url.errors %}
+                                                        <div class="form-group">
+                                                            <div class="col-sm-offset-3 col-sm-9">
+                                                                <div class="form-error">
+                                                                    {% for error in form.url.errors %}
+                                                                        <span>{{ error }}</span>
+                                                                    {% endfor %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                <button type="submit" form="new-feed-form" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% block footer %}
+        <footer class=" footer  darken-4 ">
+            <span> &copy; 2020 Designed by <a  title="Er. Ritesh Yadav">Ritesh Yadav</a>&nbsp;&nbsp;All Rights Reserved.</span>
+        </footer>
+        <a href="#" class="back-to-top">Back to Top</a>
+        {% endblock %}
+
+
+            <!-- Latest compiled and minified jQuery & Bootstrap JavaScript -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+            <!-- Latest DataTables JavaScript files -->
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+
+            <!-- Custom App JavaScript -->
+            <script src="{% static 'js/app.js' %}"></script>
+
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+            <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>-->
+            
+            <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+
+            <!-- Page-specific JavaScript -->
+            {% block javascript %}{% endblock %}
+            
+     </body>
+</html>

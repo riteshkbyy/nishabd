@@ -1,0 +1,99 @@
+<nav class="blue darken-4">
+  <div class="container" style="margin:10px" >
+      <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Nishabd</a>
+          <a class="button-collapse" data-activates="mobile-nav" href="#">
+            <i class="material-icons">menu</i>
+          </a>
+          <ul class="right hide-on-med-and-down" style="margin-right: -290px;">
+            
+              <li class=""><a class="nav-link" href="{% url 'news:articles-list' %}"> 
+               <i class="material-icons">home</i></a></li>
+            
+              <li>
+                <a  href="{% url 'about'  %}">About us</a>
+              </li>
+             
+             
+              <li class=""><a href="{% url 'article:Career' %}">Career</a></li>
+              <li class=""><a  href="{% url 'article:Sciandtech' %}">Science & Technology</a></li>
+
+              
+              <li class=""><a  href="{% url 'article:Academics' %}">Academics</a></li>
+              <li class=""><a  href="{% url 'article:Career' %}">Career</a></li>
+              <li class=""><a  href="{% url 'article:Sciandtech' %}">Science & Technology</a></li>
+              <li class=""><a  href="{% url 'article:Lifestyle' %}">Lifestyle</a></li> 
+
+
+              <!-- DROPDOWN TRIGGER -->
+              <li>
+                  <a class="dropdown-button" data-activates="my-dropdown" href="#!">
+                    <i class="material-icons right">person</i>
+                  </a>
+              </li>
+
+                 
+          </ul>
+          <ul class="side-nav" id="mobile-nav">
+              <li>
+                  <a href="#">Home</a>
+              </li>
+              <li>
+                  <a href="#">About</a>
+              </li>
+              <li>
+                  <a href="#">Contact</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+
+<ul id="my-dropdown" class="dropdown-content " style="width: max-content ;" >
+  {% if request.user.is_authenticated %}
+  <div class="green darken-4">
+    <a class="" href="{% url 'article:dashboard'  %}"><i class="material-icons">settings_applications</i>DashBoard</a>
+  </div>
+  <div class=" green darken-4" >
+    <a href="{% url 'user:logout'  %}"><i class="material-icons">logout</i>LogOut</a>
+  </div>
+  <li class="green darken-4"><a  href="{% url 'news:feeds-list' %}">Feeds</a></li>
+
+  {% else %}
+
+<div class="green darken-4">
+<a href="{% url 'user:login' %}">LogIn<i class="material-icons">login</i>
+</a>
+</div>
+<!-- ICON LINK -->
+
+{% endif %}
+
+
+</ul>
+
+ 
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>-->
+
+<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+
+<script>
+    $(document).ready(function() {
+        $('.dropdown-button').dropdown({
+            constrainWidth: true,
+            hover: true,
+            belowOrigin: true,
+            alignment: 'left'
+        });
+
+        
+        $('.button-collapse').sideNav()
+    });
+</script>
+
+
+
+
+

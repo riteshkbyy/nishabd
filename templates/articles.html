@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+
+
+{% block body %}
+
+
+
+<div class="row container">
+    
+        <nav class=" white lighten-6">
+        <div class="nav-wrapper">
+            <form>
+			{% csrf_token %} 
+                <div class="input-field" >
+                    <input type="search" id="search" required placeholder="Search articles...">
+                    <label type="search" class="label-icon"></label>
+                      <i class="material-icons">search</i>
+                    </label>
+                    <i class="material-icons">close</i>
+                </div>
+			
+				<button type="submit" class="btn btn-danger right">Search</button>
+            </form>
+        </div>
+    </nav>
+</div>
+
+
+
+
+<div class=" container" >
+
+                {% if articles %}
+				{% for article in articles %}
+				
+                <div class=" articleitem col l3 m3 s12 card hoverable" >
+                    <!-- MEDIUM -->
+					<h6>Published By {{article.author.username}} </h6>
+					 <p>{{article.created_date}}</p>
+					  <span class="card-title"><a href="{% url 'article:detail' article.slug %}">{{article.title}}</a></span>
+                    <div class="">
+                        <div class="card-image">
+						{% if article.article_image %}
+                            <img src="{{article.article_image.url}}">
+							 
+                           
+							{% endif %}
+                        </div>
+                        <div class="card-content">
+                            <p>{{article.content|safe|truncatewords:50}}</p>
+							
+							
+                        </div>
+						
+                        <div class="card-action">
+                            <a href="{% url 'article:detail' article.slug %}">Read More</a>
+                        </div>
+                    </div>
+               </div>
+			   {% endfor %}
+			   
+  </div>
+    
+	{% else %}
+    
+     
+           <div class = "alert alert-danger">
+                 No Articles Found
+            </div>
+
+ 
+		
+
+	{% endif %}
+	
+ 
+{% endblock body %}
+
+
+{%block footer%}
+{% endblock footer %}
+
+

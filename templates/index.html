@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="container">
+        <h3>Welcome to the software science Blog</h3>
+        <div class="divider"></div>
+        <p>you can share your blog posts and help people as developers on blog.</p>
+
+        <p>
+                {% if request.user.is_authenticated %}
+                        Hello, {{request.user.username}}
+                {% else %}
+                        Hello
+                {% endif %}
+        
+        </p>
+        
+</div>
+
+
+{% endblock body %}
+
