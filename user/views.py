@@ -24,7 +24,7 @@ def register(request):
         login(request,newUser)
         messages.info(request,str(username) + " Registered successfully")
 
-        return redirect("index")
+        return redirect("article:dashboard")
     context = {
             "form" : form
         }
@@ -51,10 +51,10 @@ def loginUser(request):
 
         messages.success(request,"Login Success")
         login(request,user)
-        return redirect("index")
+        return redirect("article:dashboard")
     return render(request,"login.html",context)
 def logoutUser(request):
     logout(request)
     messages.success(request,"Logout Success")
-    return redirect("index")
+    return redirect("article:articles")
 

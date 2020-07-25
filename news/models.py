@@ -37,7 +37,6 @@ class Feed(models.Model):
         feed_data = feedparser.parse(self.url)
 
         for entry in feed_data.entries:
-            print([i for i in entry])
             try:
                 article = Article.objects.get(url=entry.link)
             except:
@@ -47,7 +46,7 @@ class Feed(models.Model):
             article.url = entry.link
             article.description = entry.description
             article.description_truncated = truncatewords_html(entry.description, 150)
-            # article.image = entry.image
+            
 
             # Set publication date
             try:

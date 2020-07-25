@@ -4,14 +4,14 @@
 <div class="row container">
 
     <!-- Post Content Column -->
-    <div class="col m12 s12">
+    <div class="col m12 s12 ">
 
       <!-- Title -->
-      <blockquote class="hoverable"><h2>{{article.title}}</blockquote</h2></blockquote>
+      <blockquote class=""><h2>{{article.title}}</blockquote</h2></blockquote>
       <div class="divider"></div>
       <!-- Author -->
       <p class="lead">
-        <i class="material-icons">person</i><span> {{article.author.username}}</span> 
+        <i class="material-icons">person</i> {{article.author.username}}
       </p>
 
       
@@ -22,10 +22,11 @@
       <div class="divider"></div>
 
       <!-- Preview Image -->
+      <div class="center">
       {% if article.article_image %}
-      <img class="card hoverable" src="{{article.article_image.url}}" alt="" style="max-height:500px;max-width:100%;">
+      <img class="card hoverable center" src="{{article.article_image.url}}" alt="" style="max-height:500px;max-width:100%;">
       {% endif %}
-     
+    </div>
 
       <div class="divider"></div>
 
@@ -37,7 +38,7 @@
 
       <br>
       <!-- Post Content -->
-      <blockquote class="lead">
+      <blockquote class="lead flow-text">
           {{article.content|safe}}
       </blockquote>
 

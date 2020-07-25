@@ -35,3 +35,4 @@ class ArticlesList(generics.ListAPIView):
             queryset = queryset.filter(publication_date__gte=datetime.now()-timedelta(days=int(days)))
         
         return queryset
+

@@ -1,7 +1,10 @@
+{%load static%}
 <nav class="blue darken-4">
   <div class="container" style="margin:10px" >
       <div class="nav-wrapper">
-          <a href="#" class="brand-logo">Nishabd</a>
+        <a  href="{% url 'news:articles-list' %}" class="brand-logo"><img src="{% static 'img/white_logo.png' %}" class="responsive-img" height="80" width="120" alt="Nishabd"></a>
+
+          <!-- <a  class="brand-logo">Nishabd</a> -->
           <a class="button-collapse" data-activates="mobile-nav" href="#">
             <i class="material-icons">menu</i>
           </a>
@@ -9,16 +12,14 @@
             
               <li class=""><a class="nav-link" href="{% url 'news:articles-list' %}"> 
                <i class="material-icons">home</i></a></li>
-            
+               <li class=""><a class="" href="{% url 'article:articles'  %}">Articles</a></li>
+
               <li>
                 <a  href="{% url 'about'  %}">About us</a>
               </li>
              
              
               <li class=""><a href="{% url 'article:Career' %}">Career</a></li>
-              <li class=""><a  href="{% url 'article:Sciandtech' %}">Science & Technology</a></li>
-
-              
               <li class=""><a  href="{% url 'article:Academics' %}">Academics</a></li>
               <li class=""><a  href="{% url 'article:Career' %}">Career</a></li>
               <li class=""><a  href="{% url 'article:Sciandtech' %}">Science & Technology</a></li>
@@ -27,45 +28,55 @@
 
               <!-- DROPDOWN TRIGGER -->
               <li>
-                  <a class="dropdown-button" data-activates="my-dropdown" href="#!">
-                    <i class="material-icons right">person</i>
+                  <a class="dropdown-button transparent z-depth-0 btn white-text" data-activates="my-dropdown" href="#!">
+                    <i class="material-icons right">account_box</i>
                   </a>
               </li>
 
                  
           </ul>
           <ul class="side-nav" id="mobile-nav">
-              <li>
-                  <a href="#">Home</a>
-              </li>
-              <li>
-                  <a href="#">About</a>
-              </li>
-              <li>
-                  <a href="#">Contact</a>
-              </li>
-          </ul>
+            <li class=""><a class="nav-link" href="{% url 'news:articles-list' %}"> <i class="material-icons">home</i>Home</a></li>
+            <li class="nav-item "><a class="nav-link" href="{% url 'article:articles'  %}"><i class="material-icons">article</i>Articles</a></li>
+            <li><a  href="{% url 'about'  %}"><i class="material-icons">recent_actors</i>About us</a></li>    
+            <li class=""><a  href="{% url 'article:Academics' %}"><i class="material-icons">book</i>Academics</a></li>
+            <li class=""><a  href="{% url 'article:Career' %}"><i class="material-icons">school</i>Career</a></li>
+            <li class=""><a  href="{% url 'article:Sciandtech' %}"><i class="material-icons">science</i>Science & Technology</a></li>
+            <li class=""><a  href="{% url 'article:Lifestyle' %}"><i class="material-icons">self_improvement</i>Lifestyle</a></li> 
+            {% if request.user.is_authenticated %}
+            <li><a class="" href="{% url 'article:dashboard'  %}"><i class="material-icons">engineering</i>DashBoard</a></li>
+            <li ><a  href="{% url 'news:feeds-list' %}"><i class="material-icons">chrome_reader_mode</i>Feeds</a></li>
+            <li><a href="{% url 'user:logout'  %}"><i class="material-icons">logout</i>LogOut</a></li>
+                     
+            {% else %}
+          
+          <li>
+          <a href="{% url 'user:login' %}">Admin LogIn<i class="material-icons">login</i>
+          </a>
+        </li>
+        {% endif %}
+            </ul>
       </div>
   </div>
 </nav>
 
 
-<ul id="my-dropdown" class="dropdown-content " style="width: max-content ;" >
+<ul id="my-dropdown" class="dropdown-content blue darken-4 z-depth-0 white-text" >  
   {% if request.user.is_authenticated %}
-  <div class="green darken-4">
-    <a class="" href="{% url 'article:dashboard'  %}"><i class="material-icons">settings_applications</i>DashBoard</a>
-  </div>
-  <div class=" green darken-4" >
-    <a href="{% url 'user:logout'  %}"><i class="material-icons">logout</i>LogOut</a>
-  </div>
-  <li class="green darken-4"><a  href="{% url 'news:feeds-list' %}">Feeds</a></li>
+  <li>
+    <a class="white-text" href="{% url 'article:dashboard'  %}"><i class="material-icons">settings_applications</i>DashBoard</a>
+  </li>
+  <li >
+    <a class ="white-text" href="{% url 'user:logout'  %}"><i class="material-icons">logout</i>LogOut</a>
+  </li>
+  <li ><a class="white-text"  href="{% url 'news:feeds-list' %}">Feeds</a></li>
 
   {% else %}
 
-<div class="green darken-4">
-<a href="{% url 'user:login' %}">LogIn<i class="material-icons">login</i>
+<li>
+<a class="white-text" href="{% url 'user:login' %}">Admin LogIn<i class="material-icons">login</i>
 </a>
-</div>
+</li>
 <!-- ICON LINK -->
 
 {% endif %}

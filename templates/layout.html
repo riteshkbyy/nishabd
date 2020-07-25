@@ -51,7 +51,11 @@
                     display: none;
                 }
             }
-
+            .masonry{
+                
+                min-height: 350px;
+                border:20px solid white;
+                }
         </style>
 
         <title>NiShabd</title>
@@ -99,7 +103,7 @@
                
 
                 <!-- Back to Top Button -->
-                </div>
+                
                 <div id="new-feed-modal" tabindex="-1" role="dialog" aria-labelledby="NewFeedDialog" aria-hidden="true" class="modal fade" style="display: none;">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -170,7 +174,7 @@
 
 
         {% block footer %}
-        <footer class=" footer  darken-4 ">
+        <footer class=" black darken-4 center white-text ">
             <span> &copy; 2020 Designed by <a  title="Er. Ritesh Yadav">Ritesh Yadav</a>&nbsp;&nbsp;All Rights Reserved.</span>
         </footer>
         <a href="#" class="back-to-top">Back to Top</a>
@@ -187,7 +191,6 @@
 
             <!-- Custom App JavaScript -->
             <script src="{% static 'js/app.js' %}"></script>
-
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
             <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>-->
             

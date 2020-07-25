@@ -7,35 +7,35 @@
 	<!-- Articles Sidebar -->
 	
 	
-	<div class="row">
+	<!-- <div class="row">
 
       <div class="col s3 " style="max-width: 20em;">
-        <!-- Grey navigation panel -->
+         Grey navigation panel 
 		<div class="side-nav  settings gray "  style="margin-top: 75px;padding: 20px; ">
                 	<div class="card-title">
-                		<ul>
+                		<ul> -->
                    		<!-- <li ><a href="" ><i class="material-icons">apps</i>Feed Navigation</a></li> -->
                 	
 
                 	
-                	<li class="active" style="list-style-type: none">
-                   	 	<a href="{% if feed %}{{ request.path }}{% else %}{% url 'articles-list' %}{% endif %}" title="News Articles">
+                	<!-- <li class="active" style="list-style-type: none">
+                   	 	<a href="{#% if feed %}{#{ request.path }}{#% else %}{#% url 'articles-list' %}{#% endif %}" title="News Articles"> -->
                       		
-                      	  	<span>All Articles</span>
+                      	  	<!-- <span>All Articles</span>
                    	 	</a>
                 	</li>
                 </ul>
                 </div>
 					<div>
 						<li style="list-style-type: none" class="grey">
-						<!-- <a href="#nav-settings" title="Feed Settings" data-toggle="collapse" aria-expanded="true">
+						<a href="#nav-settings" title="Feed Settings" data-toggle="collapse" aria-expanded="true">
 							
 							<i class="material-icons">settings</i>Settings
 						</a>
-					    </li>
-						<ul id="nav-settings" class="nav sidebar-subnav collapse in" aria-expanded="true">
-							<li class="sidebar-subnav-header"><a href=""></i>Feed Settings</a></li>-->
-							<li> 
+					    </li>-->
+						<!-- <ul id="nav-settings" class=" side-nav " aria-expanded="true"> -->
+							<!--<li class="sidebar-subnav-header"><a href=""></i>Feed Settings</a></li>-->
+							<!-- <li> 
 								<a href="{{ request.path }}?days=7" title="Articles from Last 7 Days">
 									<span>Last 7 Days</span>
 								</a>
@@ -61,25 +61,25 @@
 								</a>
 							</li>
 						</ul>
-					</div>
-             	
-      </div>
+					</div> -->
+             	 
+      <!-- </div>
 
 
-    </div>
+    </div> -->
 	
 	
     {% endblock %}
 {% block content %}
 
-<div class="container row s9" >
+<div class=" row s9 " style="margin:10%;margin-top:2%">
          <!-- Teal page content  -->
-		<div class="content-heading a2">
-	    	<div class="pull-right">
+		<div class="content-heading  hoverable a2">
+	    	<!-- <div class="pull-right">
 	          	<div class="btn-group">
 	             	<button type="button" data-toggle="modal" data-target="#new-feed-modal" class="btn btn-default">New Feed</button>
 	          	</div>
-	       	</div>
+	       	</div> -->
 			{% if feed %}
 				{{ feed.title }}
 			{% else %}

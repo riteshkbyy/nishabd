@@ -3,10 +3,13 @@ from django.shortcuts import redirect, render, HttpResponse
 from rest_framework import generics, status
 from .models import Feed, Article
 from .forms import FeedForm
+from background_task import background
+from django.contrib.auth.models import User
 
 # Create your views here.
 def articles_list(request, feed_id=None):
-    if feed_id is  None:
+
+    if feed_id is None:
         feed = Feed.objects.all()
     else:
         feed = None
@@ -31,7 +34,7 @@ def feeds_list(request):
     
     return render(request, "feeds_list.html", context)
     
-@login_required
+@login_required(login_url = "user:login")
 def new_feed(request):
     if request.method == "POST":
         # Process our form
@@ -41,7 +44,7 @@ def new_feed(request):
             feed = form.save(commit=False)
             feed.save()
                 
-            return redirect('feeds-list')
+            return redirect('news:feeds-list')
     else:
         form = FeedForm
     
@@ -50,3 +53,7 @@ def new_feed(request):
     }
     
     return render(request, "new_feed.html", context)
+
+
+
+        

@@ -14,7 +14,7 @@ CATEGORY = (
 class Article(models.Model):
     category = models.CharField(max_length= 30, choices = CATEGORY, default= 0)
     author = models.ForeignKey("auth.User",on_delete = models.CASCADE,verbose_name = "Author ")
-    title = models.CharField(max_length = 50,verbose_name = "Title")
+    title = models.CharField(max_length = 200,verbose_name = "Title")
     content = RichTextField()
     created_date = models.DateTimeField(auto_now_add=True,verbose_name="Created Date")
     article_image = models.FileField(blank = True,null = True,verbose_name="Image")
