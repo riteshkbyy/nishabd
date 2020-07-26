@@ -25,7 +25,7 @@ DJANGO_MODE = os.getenv('DJANGO_MODE', "Production").lower()
 SECRET_KEY = '&49ga4rqxrp)^w=%ed&s4qf0*)1yvl!$6j=e@b^^e=i-s3g+@+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['herokuapp.com']
 
