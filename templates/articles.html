@@ -6,26 +6,33 @@
 
 
 
-<div class="row container">
+<div class=" container">
     
-        <nav class=" white lighten-6">
-        <div class="nav-wrapper">
+        <!-- <nav class=" white lighten-6"> -->
+        <div class="container white">
             <form>
-			{% csrf_token %} 
-                <div class=" wrapper input-field" >
+            {% csrf_token %} 
+            <table><tr class=""><td><input type="text" placeholder="search articles" required id="search"></td><td></label>
+                <button class="black-text"> <i class="material-icons">search</i></button>
+               </label></td></tr></table>
+             
+             
+                <!-- <div class=" wrapper input-field" >
                     <input type="search" name="keyword" id="search" required placeholder="Search articles...">
                     <label type="search" class="label-icon"></label>
-                      <i class="material-icons">search</i>
-                      <button type="submit" class="btn btn-danger right">Search</button>
+                      <i class="material-icons">search</i> -->
+                      <!-- <button type="submit" class="btn btn-danger right">Search</button> -->
 
-                    </label>
+
+
+                    <!-- </label> -->
                     <!-- <i class="material-icons">close</i> -->
-                </div>
+                <!-- </div> -->
 			
 				<!-- <button type="submit" class="btn btn-danger right">Search</button> -->
             </form>
         </div>
-    </nav>
+    <!-- </nav> -->
 </div>
 
 

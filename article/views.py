@@ -88,9 +88,8 @@ def addComment(request,slug):
 
 def Academics(request):
     keyword = request.GET.get("keyword")
-    print(keyword)
     if keyword:
-        articles = Article.objects.filter(category = "1",title_contains=keyword)
+        articles = Article.objects.filter(category = "1").filter(title__contains=keyword)
         return render(request,"articles.html",{"articles":articles})
     articles = Article.objects.filter(category = "1")
 
@@ -98,18 +97,30 @@ def Academics(request):
 
 
 def Career(request):
+    keyword = request.GET.get("keyword")
+    if keyword:
+        articles = Article.objects.filter(category = "2").filter(title__contains=keyword)
+        return render(request,"articles.html",{"articles":articles})
     articles = Article.objects.filter(category = "2")
     return render(request,"articles.html",{"articles":articles})
 
 
 
 def Sciandtech(request):
+    keyword = request.GET.get("keyword")
+    if keyword:
+        articles = Article.objects.filter(category = "3").filter(title__contains=keyword)
+        return render(request,"articles.html",{"articles":articles})
     articles = Article.objects.filter(category = "3")
     return render(request,"articles.html",{"articles":articles})
 
 
 
 def Lifestyle(request):
+    keyword = request.GET.get("keyword")
+    if keyword:
+        articles = Article.objects.filter(category = "4").filter(title__contains=keyword)
+        return render(request,"articles.html",{"articles":articles})
     articles = Article.objects.filter(category = "4")
     return render(request,"articles.html",{"articles":articles})
 
