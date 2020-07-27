@@ -114,3 +114,9 @@ def Lifestyle(request):
     return render(request,"articles.html",{"articles":articles})
 
 
+
+
+
+def About(request):
+
+    return render(request,"about.html")

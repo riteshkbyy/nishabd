@@ -1,29 +1,22 @@
 {%load static%}
 <nav class="blue darken-4">
-  <div class="container" style="margin:10px" >
-      <div class="nav-wrapper">
+  <div class="" >
+      <div class="nav-wrapper ">
         <a  href="{% url 'news:articles-list' %}" class="brand-logo"><img src="{% static 'img/white_logo.png' %}" class="responsive-img" height="80" width="120" alt="Nishabd"></a>
 
           <!-- <a  class="brand-logo">Nishabd</a> -->
           <a class="button-collapse" data-activates="mobile-nav" href="#">
             <i class="material-icons">menu</i>
           </a>
-          <ul class="right hide-on-med-and-down" style="margin-right: -290px;">
+          <ul class="right hide-on-med-and-down" >
             
-              <li class=""><a class="nav-link" href="{% url 'news:articles-list' %}"> 
-               <i class="material-icons">home</i></a></li>
-               <li class=""><a class="" href="{% url 'article:articles'  %}">Articles</a></li>
-
-              <li>
-                <a  href="{% url 'about'  %}">About us</a>
-              </li>
-             
-             
-              <li class=""><a href="{% url 'article:Career' %}">Career</a></li>
-              <li class=""><a  href="{% url 'article:Academics' %}">Academics</a></li>
-              <li class=""><a  href="{% url 'article:Career' %}">Career</a></li>
-              <li class=""><a  href="{% url 'article:Sciandtech' %}">Science & Technology</a></li>
-              <li class=""><a  href="{% url 'article:Lifestyle' %}">Lifestyle</a></li> 
+            <li class=""><a href="{% url 'news:articles-list' %}"> <i class="material-icons">home</i></a></li>
+            <li class=" "><a  href="{% url 'article:articles'  %}">Articles</a></li>
+            <li class=""><a  href="{% url 'article:about'  %}">About us</a></li>    
+            <li class=""><a  href="{% url 'article:Academics' %}">Academics</a></li>
+            <li class=""><a  href="{% url 'article:Career' %}">Career</a></li>
+            <li class=""><a  href="{% url 'article:Sciandtech' %}">Science & Technology</a></li>
+            <li class=""><a  href="{% url 'article:Lifestyle' %}">Lifestyle</a></li> 
 
 
               <!-- DROPDOWN TRIGGER -->
@@ -36,9 +29,9 @@
                  
           </ul>
           <ul class="side-nav" id="mobile-nav">
-            <li class=""><a class="nav-link" href="{% url 'news:articles-list' %}"> <i class="material-icons">home</i>Home</a></li>
-            <li class="nav-item "><a class="nav-link" href="{% url 'article:articles'  %}"><i class="material-icons">article</i>Articles</a></li>
-            <li><a  href="{% url 'about'  %}"><i class="material-icons">recent_actors</i>About us</a></li>    
+            <li class=""><a href="{% url 'news:articles-list' %}"> <i class="material-icons">home</i>Home</a></li>
+            <li class=" "><a  href="{% url 'article:articles'  %}"><i class="material-icons">article</i>Articles</a></li>
+            <li class=""><a  href="{% url 'article:about'  %}"><i class="material-icons">recent_actors</i>About us</a></li>    
             <li class=""><a  href="{% url 'article:Academics' %}"><i class="material-icons">book</i>Academics</a></li>
             <li class=""><a  href="{% url 'article:Career' %}"><i class="material-icons">school</i>Career</a></li>
             <li class=""><a  href="{% url 'article:Sciandtech' %}"><i class="material-icons">science</i>Science & Technology</a></li>
