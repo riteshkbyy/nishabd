@@ -15,15 +15,11 @@ def register(request):
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
         e_mail = form.cleaned_data.get('email')
-
         newUser = User(username =username, email = e_mail)
         newUser.set_password(password)
-        
-
         newUser.save()
         login(request,newUser)
         messages.info(request,str(username) + " Registered successfully")
-
         return redirect("article:dashboard")
     context = {
             "form" : form

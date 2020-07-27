@@ -11,6 +11,7 @@
           <ul class="right hide-on-med-and-down" >
             
             <li class=""><a href="{% url 'news:articles-list' %}"> <i class="material-icons">home</i></a></li>
+            <li ><a class=""  href="{% url 'news:feeds-list' %}">Feeds</a></li>
             <li class=" "><a  href="{% url 'article:articles'  %}">Articles</a></li>
             <li class=""><a  href="{% url 'article:about'  %}">About us</a></li>    
             <li class=""><a  href="{% url 'article:Academics' %}">Academics</a></li>
@@ -30,6 +31,7 @@
           </ul>
           <ul class="side-nav" id="mobile-nav">
             <li class=""><a href="{% url 'news:articles-list' %}"> <i class="material-icons">home</i>Home</a></li>
+            <li ><a  href="{% url 'news:feeds-list' %}"><i class="material-icons">chrome_reader_mode</i>Feeds</a></li>
             <li class=" "><a  href="{% url 'article:articles'  %}"><i class="material-icons">article</i>Articles</a></li>
             <li class=""><a  href="{% url 'article:about'  %}"><i class="material-icons">recent_actors</i>About us</a></li>    
             <li class=""><a  href="{% url 'article:Academics' %}"><i class="material-icons">book</i>Academics</a></li>
@@ -38,7 +40,6 @@
             <li class=""><a  href="{% url 'article:Lifestyle' %}"><i class="material-icons">self_improvement</i>Lifestyle</a></li> 
             {% if request.user.is_authenticated %}
             <li><a class="" href="{% url 'article:dashboard'  %}"><i class="material-icons">engineering</i>DashBoard</a></li>
-            <li ><a  href="{% url 'news:feeds-list' %}"><i class="material-icons">chrome_reader_mode</i>Feeds</a></li>
             <li><a href="{% url 'user:logout'  %}"><i class="material-icons">logout</i>LogOut</a></li>
                      
             {% else %}
@@ -54,20 +55,19 @@
 </nav>
 
 
-<ul id="my-dropdown" class="dropdown-content blue darken-4 z-depth-0 white-text" >  
+<ul id="my-dropdown" class="dropdown-content blue darken-4 z-depth-0 white-text" style="overflow: hidden;">  
   {% if request.user.is_authenticated %}
-  <li>
-    <a class="white-text" href="{% url 'article:dashboard'  %}"><i class="material-icons">settings_applications</i>DashBoard</a>
+  <li class="row">
+    <a class="white-text " href="{% url 'article:dashboard'  %}"><i class="material-icons left">dashboard</i><span class="right">DashBoard</span></a>
   </li>
   <li >
-    <a class ="white-text" href="{% url 'user:logout'  %}"><i class="material-icons">logout</i>LogOut</a>
+    <a class ="white-text" href="{% url 'user:logout'  %}"><i class="material-icons left">logout</i><span class="right">LogOut</span></a>
   </li>
-  <li ><a class="white-text"  href="{% url 'news:feeds-list' %}">Feeds</a></li>
 
   {% else %}
 
 <li>
-<a class="white-text" href="{% url 'user:login' %}">Admin LogIn<i class="material-icons">login</i>
+<a class="white-text" href="{% url 'user:login' %}">Admin LogIn<i class="material-icons left"><span class="right">LogIn</span></i>
 </a>
 </li>
 <!-- ICON LINK -->

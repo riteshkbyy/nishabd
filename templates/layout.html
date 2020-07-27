@@ -24,12 +24,12 @@
         <title>NiShabd</title>
         <style>
             footer{
-            height:50px;
+            /* height:50px; */
             text-align:center;
             color:white;
             width :100%;
             margin-bottom : 0px;
-            padding:12px;
+            padding:px;
             }
             .articleitem{
                 float: left;
@@ -56,10 +56,10 @@
             .masonry{
                 
                 min-height: 350px;
-                border:20px solid white;
+                border:5px solid white;
                 }
             
-                .dropdown-content{
+            .dropdown-content{
                width: 300px;
             }
 
@@ -93,9 +93,10 @@
 {% include "includes/nav_bar.html" %}
             
 
-             <div style = "margin-top : 50px; margin-bottom:100px;" class = "">
+<div style = "margin-top : 20px;">
                     
                 {% if messages %}
+                <div style = "margin-top : 20px; margin-bottom:20px;" class = "">
                     
                         {% for message in messages %}
                         {% if message.tags == "info" %}
@@ -114,6 +115,7 @@
                 {% endblock body %}
 
             </div>
+        </div>
          
              
 
@@ -201,7 +203,7 @@
 
 
         {% block footer %}
-        <footer class=" black darken-4 center white-text ">
+        <footer class="black darken-4 center white-text" style="position: fixed;">
             <span> &copy; 2020 Designed by <a  title="Er. Ritesh Yadav">Ritesh Yadav</a>&nbsp;&nbsp;All Rights Reserved.</span>
         </footer>
         <a href="#" class="back-to-top">Back to Top</a>
