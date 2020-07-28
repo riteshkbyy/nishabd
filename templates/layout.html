@@ -29,9 +29,8 @@
             text-align:center;
             color:white;
             width :100%;
-            /* bottom : 0px; */
-            /* position: fixed ; */
-            margin-top: auto;
+            bottom : 0; 
+
 
             }
             .articleitem{
@@ -103,8 +102,8 @@
             
 {% include "includes/nav_bar.html" %}
             
-
-<div style = "margin-top : 20px;">
+<div style="position: relative; min-height: 100vh; ">
+<div style = "margin-top : 20px;" style="padding-bottom: 2.5rem">
                     
                 {% if messages %}
                 <div style = "margin-top : 20px; margin-bottom:20px;" class = "">
@@ -126,8 +125,7 @@
                 {% endblock body %}
 
             </div>
-        </div>
-         
+
              
 
              {% block sidebar %}
@@ -211,18 +209,20 @@
                 </div>
             </div>
             
-        </div>
+        
 
-
-        {% block footer %}
-        <div>
-        <footer class="blue darken-4 center white-text" >
-            <span> &copy; 2020 Designed by <a  title="Er. Ritesh Yadav">Ritesh Yadav</a>&nbsp;&nbsp;All Rights Reserved.</span>
-        </footer>
-       </div>
-        {% endblock %}
         <a href="#" class="center back-to-top btn-floating  grey darken-3"><i class="material-icons center">arrow_upwards</i></a>
 
+
+    
+    {% block footer %}
+    
+    <footer class="blue darken-4 center white-text" >
+        <span> &copy; 2020 Designed by <a  title="Er. Ritesh Yadav">Ritesh Yadav</a>&nbsp;&nbsp;All Rights Reserved.</span>
+    </footer>
+   
+</div>
+    {% endblock %}
 
             <!-- Latest compiled and minified jQuery & Bootstrap JavaScript -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
