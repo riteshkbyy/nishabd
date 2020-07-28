@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect
-from .forms import RegisterForm,LoginForm
+from .forms import RegisterForm,LoginForm, ProfileForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import login,authenticate,logout
+from django.contrib.auth.decorators import login_required
+
 
 
 
@@ -20,7 +22,7 @@ def register(request):
         newUser.save()
         login(request,newUser)
         messages.info(request,str(username) + " Registered successfully")
-        return redirect("article:dashboard")
+        return redirect("article:profile")
     context = {
             "form" : form
         }
@@ -47,6 +49,10 @@ def loginUser(request):
 
         messages.success(request,"Login Success")
         login(request,user)
+        try:
+            return redirect(request.GET['next'])
+        except:
+            pass
         return redirect("article:dashboard")
     return render(request,"login.html",context)
 def logoutUser(request):
@@ -54,3 +60,15 @@ def logoutUser(request):
     messages.success(request,"Logout Success")
     return redirect("article:articles")
 
+
+@login_required(login_url = "user:login")
+def Profile(request):
+
+    form= ProfileForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        profile = form.save(commit=False)
+        # pro.slug = slugify(article.title)
+        profile.user = request.user
+        profile.save()
+        return redirect("user:profile")
+    return render(request,"profile.html",{"form":form})

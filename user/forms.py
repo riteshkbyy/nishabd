@@ -1,4 +1,5 @@
 from django import forms
+from .models import UserProfile
 
 class LoginForm(forms.Form):
     username = forms.CharField(label = "Username")
@@ -18,7 +19,7 @@ class RegisterForm(forms.Form):
         email = self.cleaned_data.get('email')
 
         if password and confirm and password != confirm:
-            raise forms.ValidationError("Parolalar Eşleşmiyor")
+            raise forms.ValidationError("Incorrect Password")
 
         values = {
             "username" : username,
@@ -28,3 +29,7 @@ class RegisterForm(forms.Form):
         return values
 
 
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = [ "name", "profile_picture","gender","about"]

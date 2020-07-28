@@ -20,7 +20,8 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    
+        {% block css %}
+        {% endblock %}
         <title>NiShabd</title>
         <style>
             footer{
@@ -28,8 +29,10 @@
             text-align:center;
             color:white;
             width :100%;
-            margin-bottom : 0px;
-            padding:px;
+            /* bottom : 0px; */
+            /* position: fixed ; */
+            margin-top: auto;
+
             }
             .articleitem{
                 float: left;
@@ -82,7 +85,15 @@
             td{
                 border:2px sloid grey
             }
-            
+            #my-dropdown li:hover{
+               
+               background-color:rgba(189, 170, 170, 0)
+           }
+
+
+
+
+           
         </style>
 
         <title>NiShabd</title>
@@ -199,15 +210,18 @@
                     </div>
                 </div>
             </div>
+            
         </div>
 
 
         {% block footer %}
-        <footer class="black darken-4 center white-text" style="position: fixed;">
+        <div>
+        <footer class="blue darken-4 center white-text" >
             <span> &copy; 2020 Designed by <a  title="Er. Ritesh Yadav">Ritesh Yadav</a>&nbsp;&nbsp;All Rights Reserved.</span>
         </footer>
-        <a href="#" class="back-to-top">Back to Top</a>
+       </div>
         {% endblock %}
+        <a href="#" class="center back-to-top btn-floating  grey darken-3"><i class="material-icons center">arrow_upwards</i></a>
 
 
             <!-- Latest compiled and minified jQuery & Bootstrap JavaScript -->

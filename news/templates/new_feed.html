@@ -2,7 +2,7 @@
 
 {% block content %}
 	<!-- Page Content -->
-	<div class="content-wrapper">
+	<div class="container content-wrapper">
 		<div class="content-heading">
 	      <h4> New Feed </h4>
 	    </div>
@@ -24,7 +24,12 @@
 									{% endif %}
 								</div>
 							</div>
-						
+							<div class="form-group">
+								<label class="col-sm-3 control-label">{{ form.title.label }}</label>
+								<div class="col-sm-9">
+									{{ form.title }}
+							</div>
+						</div>
 	                     	<div class="form-group">
 	                        	<label class="col-md-2 control-label">{{ form.url.label }}</label>
 	                        	<div class="col-lg-6 col-md-10">

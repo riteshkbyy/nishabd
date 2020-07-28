@@ -22,10 +22,11 @@
 
               <!-- DROPDOWN TRIGGER -->
               <li>
-                  <a class="dropdown-button transparent z-depth-0 btn white-text" data-activates="my-dropdown" href="#!">
-                    <i class="material-icons right">account_box</i>
+                  <a class="dropdown-button transparent z-depth-0 btn white-text"style="width:160px; margin-right:-30px; overflow:hidden;" data-activates="my-dropdown" href="#!">
+                    <i class="material-icons left">account_box</i>
                   </a>
               </li>
+              <!-- <li class=""><a  href="">&nbsp;</a></li> -->
 
                  
           </ul>
@@ -39,37 +40,40 @@
             <li class=""><a  href="{% url 'article:Sciandtech' %}"><i class="material-icons">science</i>Science & Technology</a></li>
             <li class=""><a  href="{% url 'article:Lifestyle' %}"><i class="material-icons">self_improvement</i>Lifestyle</a></li> 
             {% if request.user.is_authenticated %}
-            <li><a class="" href="{% url 'article:dashboard'  %}"><i class="material-icons">engineering</i>DashBoard</a></li>
-            <li><a href="{% url 'user:logout'  %}"><i class="material-icons">logout</i>LogOut</a></li>
-                     
+              <li><a class="" href="{% url 'article:dashboard'  %}"><i class="material-icons">dashboard</i>DashBoard</a></li>
+              <li><a href="{% url 'user:profile'  %}"><i class="material-icons">face</i>Profile</a></li>
+              <li><a href="{% url 'news:new-feed'  %}"><i class="material-icons">chrome_reader_mode</i>New Feed</a></li>
+              <li><a href="{% url 'user:logout'  %}"><i class="material-icons">logout</i>LogOut</a></li>
+
             {% else %}
           
-          <li>
-          <a href="{% url 'user:login' %}">Admin LogIn<i class="material-icons">login</i>
-          </a>
-        </li>
-        {% endif %}
-            </ul>
+              <li><a href="{% url 'user:login' %}">Admin LogIn<i class="material-icons">login</i></a></li>
+            {% endif %}
+          </ul>
       </div>
   </div>
 </nav>
 
 
-<ul id="my-dropdown" class="dropdown-content blue darken-4 z-depth-0 white-text" style="overflow: hidden;">  
+<ul id="my-dropdown" class=" dropdown-content blue darken-4 z-depth-0 white-text" style="overflow: hidden;">  
   {% if request.user.is_authenticated %}
-  <li class="row">
-    <a class="white-text " href="{% url 'article:dashboard'  %}"><i class="material-icons left">dashboard</i><span class="right">DashBoard</span></a>
+  <li>
+    <a class="white-text " href="{% url 'article:dashboard'  %}" ><i class="material-icons left">dashboard</i><span class="">DashBoard</span></a>
   </li>
   <li >
-    <a class ="white-text" href="{% url 'user:logout'  %}"><i class="material-icons left">logout</i><span class="right">LogOut</span></a>
+    <a class ="white-text" href="{% url 'user:profile'  %}"><i class="material-icons left">face</i><span class="">Profile</span></a>
+  </li>
+  <li >
+    <a class ="white-text" href="{% url 'news:new-feed'  %}"><i class="material-icons left">chrome_reader_mode</i><span class="">New Feed</span></a>
+  </li>
+  <li >
+    <a class ="white-text" href="{% url 'user:logout'  %}"><i class="material-icons left">logout</i><span class="">LogOut</span></a>
   </li>
 
   {% else %}
-
-<li>
-<a class="white-text" href="{% url 'user:login' %}">Admin LogIn<i class="material-icons left"><span class="right">LogIn</span></i>
-</a>
-</li>
+  <li >
+    <a class ="white-text" href="{% url 'user:login'  %}"><i class="material-icons left">login</i><span class="">LogIn</span></a>
+  </li>
 <!-- ICON LINK -->
 
 {% endif %}

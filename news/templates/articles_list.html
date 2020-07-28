@@ -44,32 +44,8 @@
 	
 {% endblock %}
 
-{% block footer %}
-	<div id="pagination-wrapper" style="display: none;"></div>
-{% endblock %}
 
 {% block javascript %}
-<script>
-   $(document).ready(function() {
-
-            // JAVASCRIPT START HERE //
-            $('.button-collapse').sideNav({
-                menuWidth: 300,
-                edge: 'left',
-                draggable: true,
-                // onOpen: function() {
-                //     console.log('Menu Open')
-                // },
-                // onClose: function() {
-                //     console.log('Menu Close')
-                // }
-            });
-
-
-
-        });
-</script>
-	
 	<script src="{% static 'js/loading.js' %}"></script>
 	<script src="{% static 'js/pagination.js' %}"></script>
 	<script src="{% static 'js/articles.js' %}"></script>
