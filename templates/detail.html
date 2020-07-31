@@ -44,47 +44,27 @@
 
       <div class="divider"></div>
 
-      <h4>Comments {% if comments %}({{comments.count }}){% endif %}</h4>
+      
       <div class="divider"></div>
-      {% if comments %}
-      {% for comment in comments  %}
-        <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">{{ comment.comment_author}}</h5>
-            {{comment.comment_date}} <br>
-            {{comment.comment_content}}
-          </div>
-        </div>
-      {% endfor %}
-      
-      
-      {% else %}
-      <div class ="alert alert-danger">
-        There are no comments to this article, be the first!      </div>
-      {% endif %}
-
-      <div class="card col hoverable container">
-          <h5 class="card-title">Add Comment: </h5>
-          <div class="card-body">
-            <form method = "post" action = "{% url 'article:comment' article.slug %}">
-              {% csrf_token %}
-              <div class="form-group">
-                  <label for="formGroupExampleInput">İsim</label>
-                  <input name = "comment_author" type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your name">
-                </div>
-              <div class="form-group">
-                  <label for="formGroupExampleInput">Comment</label>
-                <textarea name = "comment_content" class="form-control" rows="3"></textarea>
-              </div>
-              <button type="submit" class="btn btn-large right my-3">Add</button>
-            </form>
-          </div>
-        </div>
-        </div>
+      {% if author %}
+      <div class="  penci-post-author penci_media_object wrapper">
+        <div class="  wrapper">
+          <div class="">
+        {% if author.profile_picture %}
+        <img class="left" src="{{author.profile_picture.url}}" alt="" style="max-height:8em;max-width:8em;padding: .3em;">
+        {% endif %}
         
+        <h5 class=" ">{{author.name}} </h5>
       </div>
-
-      
+      <div class="penci-author-content ">
+        <p class=" " style="font-size: 1.2em;">
+          {{author.about|safe}}
+        </p>
+        <!-- <h6 class="" style="text-align: left; float: right;">{{author.about}}</h6> -->
+      </div>
+          {% endif %}
+          
+      </div>
+    </div>
 
 {% endblock body %}

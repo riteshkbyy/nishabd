@@ -17,6 +17,10 @@
     <br>
     <button type = "submit" class = "btn btn-danger">Update</button>
 </form>
+{% if author.profile_picture %}
+<img class="left" src="{{UserProfile.profile_picture.url}}" alt="" style="max-height:8em;max-width:8em;padding: .3em;">
+{% endif %}
+
 </div>
 </div>
 

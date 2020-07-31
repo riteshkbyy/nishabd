@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render, HttpResponse
 from rest_framework import generics, status
 from .models import Feed, Article
 from .forms import FeedForm
+from .tasks import update_all_feed_articles_task
 from background_task import background
 from django.contrib.auth.models import User
 
@@ -55,5 +56,8 @@ def new_feed(request):
     return render(request, "new_feed.html", context)
 
 
-
+@login_required(login_url = "user:login")
+def update_articles(request):
+    update_all_feed_articles_task()
+    return redirect('news:articles-list')
         

@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^feeds/new/$', views.new_feed, name='new-feed'),
     url(r'^feeds/(?P<feed_id>[0-9]+)/$', views.articles_list, name='feed-articles'),
     url(r'^feeds/$', views.feeds_list, name='feeds-list'),
-
+    url(r'^feeds/update$', views.update_articles, name='update-articles'),
 ]

@@ -1,6 +1,7 @@
 from django.shortcuts import render,HttpResponse,redirect,get_object_or_404,reverse
 from .forms import ArticleForm
 from .models import Article,Comment
+from user.models import UserProfile
 from django.contrib import messages
 from django.template.defaultfilters import slugify
 from django.db.models import Count
@@ -16,11 +17,16 @@ def articles(request):
     articles = Article.objects.all()
 
     return render(request,"articles.html",{"articles":articles})
+
+
 def index(request):
     return render(request,"index.html")
     
+
 def about(request):
     return render(request,"about.html")
+
+
 @login_required(login_url = "user:login")
 def dashboard(request):
     articles = Article.objects.filter(author = request.user)
@@ -28,6 +34,8 @@ def dashboard(request):
         "articles":articles
     }
     return render(request,"dashboard.html",context)
+
+
 @login_required(login_url = "user:login")
 def addArticle(request):
     form = ArticleForm(request.POST or None,request.FILES or None)
@@ -41,11 +49,15 @@ def addArticle(request):
         messages.success(request,"Article created Successfully")
         return redirect("article:dashboard")
     return render(request,"addarticle.html",{"form":form})
+
+
 def detail(request,slug):
-    #article = Article.objects.filter(id = id).first()   
     article = get_object_or_404(Article, slug=slug)
+    author = UserProfile.objects.filter(user=article.author)[0]
     comments = article.comments.all()
-    return render(request,"detail.html",{"article":article,"comments":comments })
+    return render(request,"detail.html",{"article":article,"comments":comments, "author": author})
+
+
 @login_required(login_url = "user:login")
 def updateArticle(request, slug):
 
