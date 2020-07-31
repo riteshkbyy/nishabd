@@ -1,9 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,HttpResponse,redirect,get_object_or_404,reverse
 from .forms import RegisterForm,LoginForm, ProfileForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
+from .models import *
 
 
 
@@ -11,7 +12,6 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def register(request):
-
     form = RegisterForm(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data.get("username")
@@ -62,9 +62,10 @@ def logoutUser(request):
 
 
 @login_required(login_url = "user:login")
-def Profile(request):
-
-    form= ProfileForm(request.POST or None, request.FILES or None)
+def Profile(request):    
+    user = get_object_or_404(UserProfile, user=request.user)
+    # user = ArticleForm(request.POST or None,request.FILES or None,instance = article)
+    form= ProfileForm(request.POST or None, request.FILES or None,instance = user)
     if form.is_valid():
         profile = form.save(commit=False)
         # pro.slug = slugify(article.title)
