@@ -3,27 +3,20 @@
 
 {% block content %}
 	<!-- Page Content -->
-	<div class=" container content-wrapper">
-		<div class="row content-heading">
+	<div class="container content-wrapper">
+		<div class="content-heading">
 			{% if request.user.is_authenticated %}
-			<div class="">
-				<div class=""style="float:left">
-					<div class="btn-group">
-						<button type="button" data-toggle="modal" data-target="#new-feed-modal" class="btn btn-default">New Feed</button>
-					</div>
-				</div>
-			   <div class="" style="float: right;">
-					<div class="btn-group">
-						<button href="{% url 'news:update-articles' %}" class="btn btn-default">Update All Feeds</button>
-					</div>
-				</div>
-			</div>
-		</div>
-			   {% endif %}
-		   <h4>News Feeds</h4>			
+	    	<div class="wrapper row pull-right">
+	          	<div class="btn-group" style="float: left;">
+	             	<a type="button" data-toggle="modal" data-target="#new-feed-modal" class="btn btn-default">New Feed</a>
+	          	</div>
+			   
 
+			</div>
+			   {% endif %}
+	       <h4>News Feeds</h4>
 	    </div>
-	    <div class="row container">
+	    <div class=" row">
 	    	<div class="col-xs-12">
 	           	<div class="panel panel-default">
 	               	<div class="panel-body">
