@@ -29,12 +29,8 @@ def truncate_descriptions_task():
 
 @periodic_task(run_every=(crontab(minute='*/1')), name="update_all_feed_articles", ignore_result=True)
 def update_all_feed_articles_task():
-    print('task completed')
     """ updates articles for all RSS/Atom feeds """
     feeds = Feed.objects.all()
-    
-
     for feed in feeds:
         logger.info("Retrieving Articles for " + feed.title)
-
         feed.get_feed_articles()

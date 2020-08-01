@@ -4,7 +4,6 @@ from rest_framework import generics, status
 from .models import Feed, Article
 from .forms import FeedForm
 from .tasks import update_all_feed_articles_task
-from background_task import background
 from django.contrib.auth.models import User
 
 # Create your views here.
