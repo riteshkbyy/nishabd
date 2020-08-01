@@ -20,7 +20,7 @@ class ArticlesList(generics.ListAPIView):
         return Response(serializer.data)
     
     def get_queryset(self):
-        queryset = Article.objects.order_by('-publication_date')
+        queryset = Article.objects.order_by('-publication_date').filter(publication_date__gte=datetime.now())
         
         if "feed_id" in self.kwargs:
             feed_id = self.kwargs['feed_id']

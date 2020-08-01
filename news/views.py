@@ -18,7 +18,6 @@ def articles_list(request, feed_id=None):
         
     context = {
         'feed': feed,
-        'form': form,
     }
     
     return render(request, "articles_list.html", context)
