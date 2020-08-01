@@ -1,0 +1,34 @@
+
+{% extends 'layout.html'%}
+
+
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="row container">
+<div class="">
+<h4>Update Profile</h4>
+<hr>
+<form method = "post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.media}}
+    {{form|crispy}}
+    <br>
+    <button type = "submit" class = "btn btn-danger">Update</button>
+</form>
+{% if author.profile_picture %}
+<img class="left" src="{{UserProfile.profile_picture.url}}" alt="" style="max-height:8em;max-width:8em;padding: .3em;">
+{% endif %}
+
+</div>
+</div>
+
+
+{% endblock content %}
+
+{% block css %}
+{% endblock css %}
+{% block script %}
+
+{% endblock script %}

@@ -20,12 +20,13 @@ class ArticlesList(generics.ListAPIView):
         return Response(serializer.data)
     
     def get_queryset(self):
-        queryset = Article.objects.order_by('-publication_date').filter(publication_date__gte=datetime.now())
+        queryset = Article.objects.order_by('-publication_date')
         
         if "feed_id" in self.kwargs:
             feed_id = self.kwargs['feed_id']
             feed = Feed.objects.get(pk=feed_id)
             queryset = queryset.filter(feed=feed)
+            return queryset
         else:
             queryset = queryset.filter(feed__is_active=True)
             
@@ -34,5 +35,5 @@ class ArticlesList(generics.ListAPIView):
         if days is not None:
             queryset = queryset.filter(publication_date__gte=datetime.now()-timedelta(days=int(days)))
         
-        return queryset
+        return queryset.filter(publication_date__gte=datetime.now()-timedelta(days=int(1)))
 

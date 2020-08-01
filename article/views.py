@@ -30,8 +30,10 @@ def about(request):
 @login_required(login_url = "user:login")
 def dashboard(request):
     articles = Article.objects.filter(author = request.user)
+    user = get_object_or_404(UserProfile, user=request.user)
     context = {
-        "articles":articles
+        "articles":articles,
+        "user":user
     }
     return render(request,"dashboard.html",context)
 

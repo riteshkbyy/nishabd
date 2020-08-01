@@ -62,7 +62,7 @@ def logoutUser(request):
 
 
 @login_required(login_url = "user:login")
-def Profile(request):    
+def EditProfile(request):    
     user = get_object_or_404(UserProfile, user=request.user)
     # user = ArticleForm(request.POST or None,request.FILES or None,instance = article)
     form= ProfileForm(request.POST or None, request.FILES or None,instance = user)
@@ -72,4 +72,4 @@ def Profile(request):
         profile.user = request.user
         profile.save()
         return redirect("user:profile")
-    return render(request,"profile.html",{"form":form})
+    return render(request,"editprofile.html",{"form":form})

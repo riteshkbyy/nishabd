@@ -7,6 +7,25 @@
 <p>
     Welcome, {{request.user.username}}
 </p>
+<div class="  penci-post-author penci_media_object wrapper">
+  <div class="  wrapper">
+    <div class="">
+  {% if user.profile_picture %}
+  <img class="left" src="{{user.profile_picture.url}}" alt="" style="max-height:8em;max-width:8em;padding: .3em;">
+  {% endif %}
+  
+  <h5 class=" ">{{user.name}} </h5>
+</div>
+<div class="penci-author-content ">
+  <p class=" " style="font-size: 1.2em;">
+    {{user.about|safe}}
+  </p>
+  <!-- <h6 class="" style="text-align: left; float: right;">{{author.about}}</h6> -->
+</div>
+   
+    
+</div>
+</div>
 <a class = "btn btn-danger black right" href = "{% url 'article:addarticle' %}">Add Article </a>
 {% if articles %}
 <table class="table responsive striped">
