@@ -55,7 +55,7 @@ document.getElementById("pagination-wrapper").style.display = "block";
 }
 
 window.onload = function () {
-var apiUrl = "/api" + window.location.pathname;
+var apiUrl = "/news" + window.location.pathname;
 var loadingMessage = randomLoadingMessage();
 var currentPage = getQueryString('page') || 1;
 var daysFilter = getQueryString('days');

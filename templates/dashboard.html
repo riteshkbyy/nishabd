@@ -20,15 +20,16 @@
   <p class=" " style="font-size: 1.2em;">
     {{user.about|safe}}
   </p>
-  <!-- <h6 class="" style="text-align: left; float: right;">{{author.about}}</h6> -->
 </div>
    
     
 </div>
 </div>
+<a class = "btn btn-danger black left" href="{% url 'user:profile'  %}"><i class="material-icons">face</i>Edit Profile</a>
+
 <a class = "btn btn-danger black right" href = "{% url 'article:addarticle' %}">Add Article </a>
 {% if articles %}
-<table class="table responsive striped">
+<table class="table container responsive striped">
         <thead>
           <tr>
             <th scope="col">id</th>
@@ -37,17 +38,24 @@
             <th scope="col">Date</th>
             <th scope="col"></th>
             <th scope="col"></th>
+            <th scope="col">Approved</th>
           </tr>
         </thead>
         <tbody>
           {% for article in articles %}
           <tr>
             <th scope="row">{{article.id}}</th>
-            <td><a href="{% url 'article:detail' article.slug %}">{{article.title}}</a></td>
+            <td><a href="{% url 'article:detail' article.slug %}">{{article.title}}...</a></td>
             <td>{{article.author.username}}</td>
             <td>{{article.created_date}}</td>
+            {% if not article.approved %}
             <td><a href="{% url 'article:update' article.slug %}" class = "btn btn-warning green">edit</a></td>
             <td><a href="{% url 'article:delete' article.slug %}" class = "btn btn-safe red">Delete</a> </td>
+            {% else %}
+            <td><a href="{% url 'article:update' article.slug %}" class = "btn btn-warning green disabled">edit</a></td>
+            <td><a href="{% url 'article:delete' article.slug %}" class = "btn btn-safe red disabled">Delete</a> </td>
+            {% endif %}
+            <td>{{article.approved}}</td>
               
           </tr>
           {% endfor %}

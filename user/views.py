@@ -19,7 +19,10 @@ def register(request):
         e_mail = form.cleaned_data.get('email')
         newUser = User(username =username, email = e_mail)
         newUser.set_password(password)
-        newUser.save()
+        try:
+            newUser.save()
+        except:
+            return HttpResponse("user already exists")
         login(request,newUser)
         messages.info(request,str(username) + " Registered successfully")
         return redirect("article:profile")
@@ -64,11 +67,9 @@ def logoutUser(request):
 @login_required(login_url = "user:login")
 def EditProfile(request):    
     user = get_object_or_404(UserProfile, user=request.user)
-    # user = ArticleForm(request.POST or None,request.FILES or None,instance = article)
     form= ProfileForm(request.POST or None, request.FILES or None,instance = user)
     if form.is_valid():
         profile = form.save(commit=False)
-        # pro.slug = slugify(article.title)
         profile.user = request.user
         profile.save()
         return redirect("user:profile")

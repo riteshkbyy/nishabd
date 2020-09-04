@@ -29,7 +29,6 @@ urlpatterns = [
     path('about/',views.about,name = "about"),
     path('article/',include("article.urls")),
     path('user/',include("user.urls")),
-    # path('', include("news.urls")),
     url(r'^$', articles_list, name='articles-list'),
     url(r'^news/', include('news.urls')),
     # REST API URLs
@@ -37,5 +36,6 @@ urlpatterns = [
     url(r'^api/news/articles/$', ArticlesList.as_view()),
     url(r'^api/news/feeds/(?P<feed_id>[0-9]+)/$', ArticlesList.as_view()),
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns = format_suffix_patterns(urlpatterns)

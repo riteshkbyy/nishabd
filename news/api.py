@@ -31,9 +31,13 @@ class ArticlesList(generics.ListAPIView):
             queryset = queryset.filter(feed__is_active=True)
             
         days = self.request.query_params.get('days', None)
+        print(days)
         
         if days is not None:
             queryset = queryset.filter(publication_date__gte=datetime.now()-timedelta(days=int(days)))
         
         return queryset.filter(publication_date__gte=datetime.now()-timedelta(days=int(1)))
 
+# if keyword:
+#     articles = Article.objects.filter(title__contains = keyword)
+#     return render(request,"articles.html",{"articles":articles})

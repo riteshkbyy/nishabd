@@ -9,12 +9,10 @@ from django.contrib.auth.decorators import login_required
 
 def articles(request):
     keyword = request.GET.get("keyword")
-    print(keyword)
-
     if keyword:
-        articles = Article.objects.filter(title__contains = keyword)
+        articles = Article.objects.filter(approved=True).filter(title__contains = keyword)
         return render(request,"articles.html",{"articles":articles})
-    articles = Article.objects.all()
+    articles = Article.objects.filter(approved=True)
 
     return render(request,"articles.html",{"articles":articles})
 
@@ -29,6 +27,7 @@ def about(request):
 
 @login_required(login_url = "user:login")
 def dashboard(request):
+    # if request.user.isadmin
     articles = Article.objects.filter(author = request.user)
     user = get_object_or_404(UserProfile, user=request.user)
     context = {

@@ -4,7 +4,6 @@
       <div class="nav-wrapper ">
         <a  href="{% url 'news:articles-list' %}" class="brand-logo"><img src="{% static 'img/white_logo.png' %}" class="responsive-img" height="80" width="120" alt="Nishabd"></a>
 
-          <!-- <a  class="brand-logo">Nishabd</a> -->
           <a class="button-collapse" data-activates="mobile-nav" href="#">
             <i class="material-icons">menu</i>
           </a>
@@ -20,13 +19,11 @@
             <li class=""><a  href="{% url 'article:Lifestyle' %}">Lifestyle</a></li> 
 
 
-              <!-- DROPDOWN TRIGGER -->
               <li>
                   <a class="dropdown-button transparent z-depth-0 btn white-text"style="width:15em; margin-right:-6em; overflow:hidden;" data-activates="my-dropdown" href="#!">
                     <i class="material-icons left">account_box</i>
                   </a>
               </li>
-              <!-- <li class=""><a  href="">&nbsp;</a></li> -->
 
                  
           </ul>
@@ -41,7 +38,6 @@
             <li class=""><a  href="{% url 'article:Lifestyle' %}"><i class="material-icons">self_improvement</i>Lifestyle</a></li> 
             {% if request.user.is_authenticated %}
               <li><a class="" href="{% url 'article:dashboard'  %}"><i class="material-icons">dashboard</i>DashBoard</a></li>
-              <li><a href="{% url 'user:profile'  %}"><i class="material-icons">face</i>Profile</a></li>
               <li><a href="{% url 'news:new-feed'  %}"><i class="material-icons">chrome_reader_mode</i>New Feed</a></li>
               <li><a href="{% url 'news:update-articles'  %}"><i class="material-icons">cached</i>Update Feeds</a></li>
               <li><a href="{% url 'user:logout'  %}"><i class="material-icons">logout</i>LogOut</a></li>
@@ -56,39 +52,16 @@
 
 
 <ul id="my-dropdown" class=" dropdown-content blue darken-4 z-depth-0 white-text" style="overflow: hidden; margin-left: -50px;">  
-  {% if request.user.is_authenticated %}
-  <li>
-    <a class="white-text " href="{% url 'article:dashboard'  %}" ><i class="material-icons left">dashboard</i><span class="">DashBoard</span></a>
-  </li>
-  <li >
-    <a class ="white-text" href="{% url 'user:profile'  %}"><i class="material-icons left">face</i><span class="">Profile</span></a>
-  </li>
-  <li >
-    <a class ="white-text" href="{% url 'news:new-feed'  %}"><i class="material-icons left">chrome_reader_mode</i><span class="">New Feed</span></a>
-  </li>
-  <li >
-    <a class ="white-text" href="{% url 'news:update-articles'  %}"><i class="material-icons left">cached</i><span class="">Update Feeds</span></a>
-  </li>
-  <li >
-    <a class ="white-text" href="{% url 'user:logout'  %}"><i class="material-icons left">logout</i><span class="">LogOut</span></a>
-  </li>
-
-  {% else %}
-  <li >
-    <a class ="white-text" href="{% url 'user:login'  %}"><i class="material-icons left">login</i><span class="">LogIn</span></a>
-  </li>
-<!-- ICON LINK -->
-
-{% endif %}
-
-
+    {% if request.user.is_authenticated %}
+    <li>    <a class="white-text " href="{% url 'article:dashboard'  %}" ><i class="material-icons left">dashboard</i><span class="">DashBoard</span></a> </li>
+    <li >    <a class ="white-text" href="{% url 'news:new-feed'  %}"><i class="material-icons left">chrome_reader_mode</i><span class="">New Feed</span></a>  </li>
+    <li >    <a class ="white-text" href="{% url 'news:update-articles'  %}"><i class="material-icons left">cached</i><span class="">Update Feeds</span></a>  </li>
+    <li >    <a class ="white-text" href="{% url 'user:logout'  %}"><i class="material-icons left">logout</i><span class="">LogOut</span></a>  </li>
+    {% else %}
+    <li >    <a class ="white-text" href="{% url 'user:login'  %}"><i class="material-icons left">login</i><span class="">LogIn</span></a> </li>
+  {% endif %}
 </ul>
 
- 
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>-->
-
-<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
 
 <script>
     $(document).ready(function() {

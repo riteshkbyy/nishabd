@@ -9,6 +9,19 @@
 	
     {% endblock %}
 {% block content %}
+<div class=" container">
+    
+	<!-- <nav class=" white lighten-6"> -->
+	<div class="container white">
+		<form>
+		{% csrf_token %} 
+		<table><tr class=""><td><input type="text" name="keyword" placeholder="search articles. . " required id="search"></td><td></label>
+			<button class="black-text"> <i class="material-icons">search</i></button>
+		   </label></td></tr></table>
+	</form>
+	</div>
+
+</div>
 
 <div class="container row s9 " >
          <!-- Teal page content  -->
@@ -50,6 +63,9 @@
 
 
 {% block javascript %}
+<script >
+	alert(getQueryString('keyword'))
+</script>
 	<script src="{% static 'js/loading.js' %}"></script>
 	<script src="{% static 'js/pagination.js' %}"></script>
 	<script src="{% static 'js/articles.js' %}"></script>
